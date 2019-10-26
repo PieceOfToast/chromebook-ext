@@ -1,0 +1,46 @@
+{
+	"name": "VChrome",
+	"version": "0.0.1",
+	"description": "A chrome extension to manage chromebooks.",
+	"permissions": [
+		"tabs",
+		"storage",
+		"*://*/*",
+		"declarativeContent",
+		"webRequest",
+		"webRequestBlocking"
+	],
+	"background": {
+		"scripts": [
+			"scripts/background.js"
+		],
+		"persistent": true
+	},
+	"externally_connectable": {
+  	"matches": [
+      "*://*/*"
+		]
+	},
+	"browser_action": {
+		"default_title": "VChrome",
+		"default_icon": "128.png"
+	},
+	"icons": {
+		"16": "icons/16.png",
+		"48": "icons/48.png",
+		"128": "icons/128.png"
+	},
+	"web_accessible_resources": [
+	],
+	"content_scripts": [{
+		"matches": [
+      "://*/*"
+ 		],
+		"js": ["start.js"],
+		"css": [
+		],
+		"run_at": "document_start"
+	}],
+	"manifest_version": 2,
+	"content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'"
+}
